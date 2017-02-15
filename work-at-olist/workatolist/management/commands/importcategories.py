@@ -1,4 +1,5 @@
 from django.core.management import BaseCommand
+from myfunctions import file_import
 
 class Command(BaseCommand):
     help = "Imports channels's categories"
@@ -12,4 +13,4 @@ class Command(BaseCommand):
         channel_name = import_arguments[0]
         file_name = import_arguments[1]
 
-        #self.stdout.write("Import the channel " + channel_name + " and .csv file " + file_name)
+        file_import(channel_name,file_name)
