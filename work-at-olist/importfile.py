@@ -1,12 +1,11 @@
 import sys
 import django.db
-from workatolist.channel import count_channel, get_channel
-from workatolist.file import read_file
 from workatolist.models import Channel,Category
 
 def file_import(channel_name,file_name):
     try:
-        channel_number = count_channel(channel_name)
+        channel = Channel()
+        channel_number = channel.count_channel(channel_name)
 
         if channel_number == 0:
             channel_obj = Channel(name = channel_name)
@@ -17,7 +16,7 @@ def file_import(channel_name,file_name):
         for line in file_csv:
             if not 'Category' in line:
                 categories_lines = line.replace("\n","").split("/")
-                channel = get_channel(channel_name)
+                channel = channel.get_channel(channel_name)
                 parent_id = None
 
                 for index, category_name in enumerate(categories_lines):
@@ -26,12 +25,20 @@ def file_import(channel_name,file_name):
                                 channel = channel.id).first()
 
                     if category == None:
-                        category = Category(parent_id = parent_id, name = category_name, channel = channel)
+                        category = Category.objects.create_category(name = category_name, parent_id = parent_id, channel = channel)
                         category.save()
 
-                   parent_id = category.id
+                    parent_id = category.id
     except IOError as error:
         print("Error: {0}".format(error))
     except:
         print("Unexpected error:", sys.exc_info()[0])
         raise
+
+def read_file(name_file):
+    try:
+        file_csv = open(name_file, "r")
+
+        return file_csv
+    except IOError as error_import:
+        print("Error: {0}".format(error_import))
