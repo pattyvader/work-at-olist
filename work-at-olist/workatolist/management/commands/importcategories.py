@@ -1,5 +1,5 @@
 from django.core.management import BaseCommand
-from importfile import file_import
+from workatolist.importfile import file_import
 
 class Command(BaseCommand):
     help = "Imports channels's categories"
