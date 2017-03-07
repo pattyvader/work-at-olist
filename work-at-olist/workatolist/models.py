@@ -26,7 +26,7 @@ class CategoryManager(models.Manager):
 class Category(models.Model):
     name = models.CharField(max_length=100)
     parent_id = models.IntegerField(blank=True, null=True)
-    channel = models.ForeignKey('Channel', on_delete=models.SET_NULL,null=True)
+    channel = models.ForeignKey('Channel', on_delete=models.SET_NULL,null=True,related_name='categories')
 
     def __str__(self):
         return self.name
