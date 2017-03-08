@@ -11,9 +11,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ld7s4bcrf)mso_*y^mnnfrr=fh&)4gs$*e%-acjxw5nyulpioz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['secret-refuge-95201.herokuapp.com']
 
 
 # Application definition
@@ -25,9 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'workatolist',
     'rest_framework',
     'rest_framework_docs',
+    'workatolist',
 ]
 
 MIDDLEWARE_CLASSES = [
