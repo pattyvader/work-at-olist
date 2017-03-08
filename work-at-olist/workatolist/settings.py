@@ -130,4 +130,5 @@ REST_FRAMEWORK_DOCS = {
     'HIDE_DOCS': False
 }
 
-DATABASES['default'] = dj_database_url.config()
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
