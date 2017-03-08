@@ -3,6 +3,7 @@ from django.db import models
 
 class Channel(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    managed=True
 
     def __str__(self):
         return self.name
@@ -27,6 +28,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     channel = models.ForeignKey('Channel', on_delete=models.SET_NULL,null=True,related_name='categories')
     parent = models.ForeignKey('self',null=True, blank=True,related_name='subcategories')
+    managed=True
 
     def __str__(self):
         return self.name
