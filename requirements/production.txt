@@ -4,3 +4,4 @@ prettyconf
 dj-database-url
 djangorestframework
 drfdocs
+whitenoise==3.3.0
