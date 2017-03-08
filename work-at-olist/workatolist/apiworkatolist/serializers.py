@@ -5,26 +5,13 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('id', 'parent', 'name', 'channel')
-
-class CategoryParentSerializer(serializers.ModelSerializer):
-    parent = CategorySerializer(read_only=True)
-    class Meta:
-        model = Category
-        fields = ('id', 'parent', 'name', 'channel')
-
-
-class CategorySimpleSerializer(serializers.ModelSerializer):
-    parent = CategoryParentSerializer(read_only=True)
-    class Meta:
-        model = Category
-        fields = ('id', 'parent', 'name', 'channel','subcategories')
+        depth = 1
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
-    subcategories = CategorySimpleSerializer(many=True, read_only=True)
-    parent = CategorySerializer(read_only=True)
     class Meta:
         model = Category
         fields = ('id', 'parent', 'name', 'channel','subcategories')
+        depth = 2
 
 class ChannelSerializer(serializers.ModelSerializer):
     class Meta:
