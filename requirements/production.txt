@@ -4,4 +4,3 @@ prettyconf
 dj-database-url
 djangorestframework
 drfdocs
-python-3.5.2
