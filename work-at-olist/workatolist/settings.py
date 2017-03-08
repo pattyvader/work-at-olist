@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ld7s4bcrf)mso_*y^mnnfrr=fh&)4gs$*e%-acjxw5nyulpioz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['secret-refuge-95201.herokuapp.com','127.0.0.1']
 
@@ -70,10 +70,10 @@ WSGI_APPLICATION = 'workatolist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'olisttest',
-        'USER': 'olist',
-        'PASSWORD': 'olist@123',
-        'HOST': 'localhost',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
     }
 }
 
@@ -130,7 +130,7 @@ REST_FRAMEWORK_DOCS = {
     'HIDE_DOCS': False
 }
 
-#db_from_env = dj_database_url.config()
-#DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
