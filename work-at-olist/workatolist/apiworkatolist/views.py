@@ -17,7 +17,7 @@ class CategoryDetailViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         id = self.kwargs['id']
 
-        return Category.objects.filter(parent_id = id)
+        return Category.objects.filter(id = id)
 
 class ChannelCategoriesDetailViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
