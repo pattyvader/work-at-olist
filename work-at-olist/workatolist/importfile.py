@@ -25,14 +25,15 @@ def file_import(channel_name,file_name):
 
                 for index, category_name in enumerate(categories_lines):
                     category_name = category_name.strip()
-                    category = Category.objects.filter(parent_id = parent_id, name = category_name,
+                    category = Category.objects.filter(parent = parent_id, name = category_name,
                                 channel = channel.id).first()
 
                     if category == None:
-                        category = Category.objects.create_category(name = category_name, parent_id = parent_id, channel = channel)
+                        category = Category.objects.create_category(name = category_name,
+                            parent = parent_id, channel = channel)
                         category.save()
 
-                    parent_id = category.id
+                    parent_id = category
     except IOError as error:
         print("Error: {0}".format(error))
     except:
